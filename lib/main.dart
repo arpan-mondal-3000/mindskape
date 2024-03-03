@@ -39,8 +39,8 @@ class _MyHomePageState extends State<MyHomePage> {
           title: Text(widget.title),
         ),
         body: Container(
-          color: Colors.cyanAccent,
+          color: const Color.fromARGB(255, 251, 24, 255),
         ) // This trailing comma makes auto-formatting nicer for build methods.
-    );
+        );
   }
 }

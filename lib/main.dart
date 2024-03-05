@@ -6,7 +6,7 @@ import 'package:mindskape/helper.dart';
 
 import 'LoginActivity.dart';
 import 'ProfileActivity.dart';
-import 'SignUpActivaty.dart';
+import 'SignUpActivity.dart';
 import 'firebase_options.dart';
 
 Future<void> main() async {
@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
           useMaterial3: true,
         ),
         debugShowCheckedModeBanner: false,
-        home: ProfileActivity());
+        home: SignUpActivity());
   }
 }
 
@@ -53,7 +53,7 @@ class _MyHomePageState extends State<MyHomePage> {
           title: Text(widget.title),
         ),
         body: Container(
-          // main contener
+          // main container
           width: double.maxFinite,
           height: double.maxFinite,
           decoration: BoxDecoration(

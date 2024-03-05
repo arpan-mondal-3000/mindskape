@@ -130,7 +130,7 @@ class LoginActivity extends StatelessWidget {
                                     Icon(Icons.password),
                                     true),
 
-                                //  Gap Between two contener
+                                //  Gap Between two container
                                 SizedBox(
                                   height: 30,
                                 ),
@@ -153,7 +153,7 @@ class LoginActivity extends StatelessWidget {
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                      //texe is deavle beacause this is login page
+                                      //texe is deavle because this is login page
 
                                       //  Text("Already have an account?",style:TextStyle(color: CupertinoColors.white,fontSize: 15),),
 

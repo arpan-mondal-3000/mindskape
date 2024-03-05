@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class ProfileActivity extends StatefulWidget {
   const ProfileActivity({super.key});
@@ -48,7 +47,6 @@ class _ProfileActivityState extends State<ProfileActivity> {
                        child:  Stack(children: [ Positioned(
                            bottom:0,left: 8,
                            child: Text("PROFILE",style: TextStyle(color: Colors.red.shade900,fontSize: 35,fontWeight: FontWeight.w900),)),
-                       FaIcon(FontAwesomeIcons.gamepad)
                        ])
 
                        ),

@@ -18,6 +18,7 @@ dependencies:
   get: ^4.6.6
   cloud_firestore:
   font_awesome_flutter:
+  flutter_profile_picture: ^2.0.0
 
 
 dev_dependencies:

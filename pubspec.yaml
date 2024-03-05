@@ -17,6 +17,8 @@ dependencies:
   firebase_auth:
   get: ^4.6.6
   cloud_firestore:
+  font_awesome_flutter:
+  flineicons:
 
 
 dev_dependencies:

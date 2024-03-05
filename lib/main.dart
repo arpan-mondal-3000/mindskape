@@ -5,6 +5,7 @@ import 'package:flutter/widgets.dart';
 import 'package:mindskape/helper.dart';
 
 import 'LoginActivity.dart';
+import 'ProfileActivity.dart';
 import 'SignUpActivaty.dart';
 import 'firebase_options.dart';
 
@@ -24,14 +25,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blueAccent),
-        useMaterial3: true,
-      ),
-      debugShowCheckedModeBanner: false,
-      home: LoginActivity()
-    );
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.blueAccent),
+          useMaterial3: true,
+        ),
+        debugShowCheckedModeBanner: false,
+        home: ProfileActivity());
   }
 }
 
@@ -45,7 +45,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -54,17 +53,14 @@ class _MyHomePageState extends State<MyHomePage> {
           title: Text(widget.title),
         ),
         body: Container(
-      // main contener
-      width: double.maxFinite,
-      height: double.maxFinite,
-       decoration:  BoxDecoration(
-              image:DecorationImage(
+          // main contener
+          width: double.maxFinite,
+          height: double.maxFinite,
+          decoration: BoxDecoration(
+              image: DecorationImage(
                   image: AssetImage("assets/images/sample.jpg"),
-                  fit: BoxFit.cover
-              )
-          ),
-
-    ) // This trailing comma makes auto-formatting nicer for build methods.
+                  fit: BoxFit.cover)),
+        ) // This trailing comma makes auto-formatting nicer for build methods.
         );
   }
 }

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "883775755673",
+    "project_id": "mindskape-edf80",
+    "storage_bucket": "mindskape-edf80.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:883775755673:android:69759e0a09e825eebdaf08",
+        "android_client_info": {
+          "package_name": "com.example.mindskape"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBcf12R0xviaqoURCgORjKnotQ7rkLArB0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

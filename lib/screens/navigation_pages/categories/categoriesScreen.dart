@@ -19,6 +19,17 @@ class CategoriesScreen extends StatelessWidget {
                     fit: BoxFit.cover,
                     opacity: .8)),
           ),
+          Column(
+            children: <Widget>[
+              Container(
+                  padding: EdgeInsets.symmetric(vertical: mq.height*.05, horizontal: 20),
+                  child: Text(
+                      'CATEGORIES',
+                      style: TextStyle(
+                        fontSize: 26,
+                      ))),
+            ],
+          )
         ],
       ),
 

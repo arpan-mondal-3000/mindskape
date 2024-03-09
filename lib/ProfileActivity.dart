@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -19,7 +21,7 @@ class _ProfileActivityState extends State<ProfileActivity> {
         height: double.maxFinite,
         child: Stack(
           children: [
-            //bckground contener its content background color     ########################################
+            //background container its content background color     ########################################
 
             Container(
                 width: double.maxFinite,
@@ -27,12 +29,11 @@ class _ProfileActivityState extends State<ProfileActivity> {
                 decoration: BoxDecoration(
                     gradient: LinearGradient(
                         colors: [
-                      Colors.cyan.shade100.withOpacity(.6),
-                      Colors.purpleAccent.shade100.withOpacity(.3),
-                      Colors.indigoAccent.shade100.withOpacity(.8),
+                      const Color(0xffA8EDEA).withOpacity(.6),
+                      const Color(0xffFED6E3),
                     ],
-                        begin: AlignmentDirectional(1, 0),
-                        end: AlignmentDirectional(0, 1)))),
+                        begin: const AlignmentDirectional(1, 0),
+                        end: const AlignmentDirectional(0, 1)))),
 
             Column(
               children: [
@@ -42,7 +43,7 @@ class _ProfileActivityState extends State<ProfileActivity> {
                       height: 90,
                       // color: Colors.yellowAccent,
 
-                      child: Stack(
+                      child: const Stack(
                         children: [
                           Positioned(
                               bottom: 0,
@@ -50,7 +51,7 @@ class _ProfileActivityState extends State<ProfileActivity> {
                               child: Text(
                                 "PROFILE",
                                 style: TextStyle(
-                                    color: Colors.red.shade900,
+                                    color: Color(0xff6C464E),
                                     fontSize: 35,
                                     fontWeight: FontWeight.w900),
                               )),
@@ -58,51 +59,48 @@ class _ProfileActivityState extends State<ProfileActivity> {
                               right: 10,
                               bottom: 10,
                               child: FaIcon(
-                                FontAwesomeIcons.notesMedical,
+                                FontAwesomeIcons.penToSquare,
                                 size: 30,
                               ))
                         ],
                       )),
                 ]),
-                Divider(
+                const Divider(
                   color: Colors.black,
                   thickness: 2,
                   height: 0,
                 ),
                 CircleAvatar(
                   maxRadius: 85,
-                  backgroundColor: Colors.cyan.withOpacity(0.0),
+                  backgroundColor: Colors.cyan.withOpacity(0),
                   child: Icon(
                     Icons.account_circle_outlined,
                     size: 180,
-                    color: CupertinoColors.black,
+                    color: Colors.grey[700],
                     fill: .5,
                   ),
                 ),
-                Text(
+                const SizedBox(height: 10,),
+                const Text(
                   "Radhe Krishna",
-                  style: TextStyle(color: Colors.black, fontSize: 20),
+                  style: TextStyle(color: Color(0xff6C464E), fontSize: 20, fontWeight: FontWeight.bold),
                 ),
-                Text(
+                const Text(
                   "hareKrishna@gamil.com",
-                  style: TextStyle(color: Colors.black, fontSize: 15),
+                  style: TextStyle(color: Color(0xff6C464E), fontSize: 15),
                 ),
-                SizedBox(
-                  height: 100,
-                ),
+                const SizedBox(height: 60,),
                 
                 ////  personal information
                 Container(
-                  width: double.maxFinite,
+                  width: 350,
                   height: 60,
                   decoration: BoxDecoration(
-                      color: Colors.yellow,
-                      borderRadius: BorderRadius.circular(
-                        40,
-                      ),
-                      border: Border.all(color: Colors.black, width: 2)),
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 19.0),
+                      color: const Color(0xffFFF9AD),
+                      borderRadius: BorderRadius.circular(12,),
+                  ),
+                  child: const Padding(
+                    padding: EdgeInsets.only(left: 19.0),
                     child: Stack(
                       alignment: AlignmentDirectional.centerStart,
                       children: [
@@ -113,7 +111,7 @@ class _ProfileActivityState extends State<ProfileActivity> {
                         Positioned(
                             right: 0,
                             child: Icon(
-                              Icons.navigate_next,
+                              Icons.chevron_right_rounded,
                               size: 60,
                             ))
                       ],
@@ -121,32 +119,28 @@ class _ProfileActivityState extends State<ProfileActivity> {
                   ),
                 ),
                 
-                //time spend ##########
-                SizedBox(
-                  height: 20,
-                ),
+                //time spent
+                const SizedBox(height: 15,),
                 Container(
-                  width: double.maxFinite,
+                  width: 350,
                   height: 60,
                   decoration: BoxDecoration(
-                      color: Colors.yellow,
-                      borderRadius: BorderRadius.circular(
-                        40,
-                      ),
-                      border: Border.all(color: Colors.black, width: 2)),
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 19.0),
+                      color: const Color(0xffFFF9AD),
+                      borderRadius: BorderRadius.circular(12,),
+                  ),
+                  child: const Padding(
+                    padding: EdgeInsets.only(left: 19.0),
                     child: Stack(
                       alignment: AlignmentDirectional.centerStart,
                       children: [
                         Text(
-                          "Time Spend",
+                          "Time Spent",
                           style: TextStyle(color: Colors.black, fontSize: 20),
                         ),
                         Positioned(
                             right: 0,
                             child: Icon(
-                              Icons.navigate_next,
+                              Icons.chevron_right_rounded,
                               size: 60,
                             ))
                       ],
@@ -154,21 +148,17 @@ class _ProfileActivityState extends State<ProfileActivity> {
                   ),
                 ),
                 
-                //Personal Stats  #######
-                SizedBox(
-                  height: 20,
-                ),
+                //Personal Stats
+                const SizedBox(height: 15,),
                 Container(
-                  width: double.maxFinite,
+                  width: 350,
                   height: 60,
                   decoration: BoxDecoration(
-                      color: Colors.yellow,
-                      borderRadius: BorderRadius.circular(
-                        40,
-                      ),
-                      border: Border.all(color: Colors.black, width: 2)),
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 19.0),
+                      color: const Color(0xffFFF9AD),
+                      borderRadius: BorderRadius.circular(12,),
+                  ),
+                  child: const Padding(
+                    padding: EdgeInsets.only(left: 19.0),
                     child: Stack(
                       alignment: AlignmentDirectional.centerStart,
                       children: [
@@ -179,42 +169,7 @@ class _ProfileActivityState extends State<ProfileActivity> {
                         Positioned(
                             right: 0,
                             child: Icon(
-                              Icons.navigate_next,
-                              size: 60,
-                            ))
-                      ],
-                    ),
-                  ),
-                ),
-                
-                
-                //poind Gained
-                
-                SizedBox(
-                  height: 20,
-                ),
-                Container(
-                  width: double.maxFinite,
-                  height: 60,
-                  decoration: BoxDecoration(
-                      color: Colors.yellow,
-                      borderRadius: BorderRadius.circular(
-                        40,
-                      ),
-                      border: Border.all(color: Colors.black, width: 2)),
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 19.0),
-                    child: Stack(
-                      alignment: AlignmentDirectional.centerStart,
-                      children: [
-                        Text(
-                          "Point Gained",
-                          style: TextStyle(color: Colors.black, fontSize: 20),
-                        ),
-                        Positioned(
-                            right: 0,
-                            child: Icon(
-                              Icons.navigate_next,
+                              Icons.chevron_right_rounded,
                               size: 60,
                             ))
                       ],
@@ -222,9 +177,9 @@ class _ProfileActivityState extends State<ProfileActivity> {
                   ),
                 ),
 
-                SizedBox(
-                  height: 20,
-                ),
+                const SizedBox(height: 150,),
+
+                // Logout
                 Container(
                   width: double.maxFinite,
 
@@ -232,19 +187,14 @@ class _ProfileActivityState extends State<ProfileActivity> {
                       padding: const EdgeInsets.only(left: 15.0),
                       child: Row(
                         children: [
-                          Text("Logout",style: TextStyle(color: Colors.red,fontSize: 20),),
-                          SizedBox(width: 10,),
-                          FaIcon(FontAwesomeIcons.arrowRightFromBracket,color: Colors.red,size: 30,shadows: [
+                          FaIcon(FontAwesomeIcons.arrowRightFromBracket,color: const Color(0xffC82626),size: 30,shadows: [
                             Shadow(color: Colors.purpleAccent.shade100,blurRadius: 10),
-
-
-
                           ],),
-
+                          const SizedBox(width: 10,),
+                          const Text("Logout",style: TextStyle(color: Color(0xffC82626),fontSize: 20),),
                         ],
                       ),
                     ),
-
                 )
               ],
             ),

@@ -3,10 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/widgets.dart';
 import 'package:mindskape/helper.dart';
-import 'package:mindskape/screens/nevigation_pages/home/homeScreen.dart';
+import 'package:mindskape/screens/navigation_pages/home/homeScreen.dart';
+import 'package:mindskape/screens/navigation_pages/categories/categoriesScreen.dart';
 
 import 'screens/signuppages/LoginActivity.dart';
-import 'screens/nevigation_pages/profile/ProfileActivity.dart';
+import 'screens/navigation_pages/profile/ProfileActivity.dart';
 import 'screens/signuppages/SignUpActivity.dart';
 import 'firebase_options.dart';
 late Size mq;
@@ -34,7 +35,7 @@ class MyApp extends StatelessWidget {
           useMaterial3: true,
         ),
         debugShowCheckedModeBanner: false,
-        home:  HomePages());
+        home: CategoriesScreen());
   }
 }
 

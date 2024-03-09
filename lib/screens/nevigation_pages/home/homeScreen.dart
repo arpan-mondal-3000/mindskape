@@ -17,12 +17,38 @@ class _HomePagesState extends State<HomePages> {
 
       body: Stack(
         children: [
-          Container(decoration: BoxDecoration(image: DecorationImage(image: AssetImage('assets/images/HomePageBg.jpg'),fit: BoxFit.cover)),
+          Container(decoration: BoxDecoration(image: DecorationImage(image: AssetImage('assets/images/HomePageBg.jpg'),fit: BoxFit.cover,opacity:0.8)),
           ),
           Container(
             width: mq.width,
-            height: mq.height*.1,
-            color: Colors.white70,
+            height: mq.height*.13,
+
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(left: mq.width*.03,top: mq.height*.03),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+
+                      Text("Hi, RADHE!!",style: TextStyle(fontSize: 26,fontWeight: FontWeight.bold,color: Color(0xff6C464E)),),
+                      Text("09 March,2024",style: TextStyle(fontSize: 16,fontWeight: FontWeight.w700,color: Color(0xff6C464E))),
+                    ],
+
+                  ),
+                ),
+
+                Row(
+                  children: [
+                    IconButton(onPressed: (){}, icon: Icon(Icons.call,size: 40,)),
+                    IconButton(onPressed: (){}, icon: Icon(Icons.notifications,size: 40,)),
+
+                  ],
+                )
+              ],
+            ),
           )
         ],
       ),

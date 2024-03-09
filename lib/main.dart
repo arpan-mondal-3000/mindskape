@@ -3,16 +3,19 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/widgets.dart';
 import 'package:mindskape/helper.dart';
+import 'package:mindskape/screens/nevigation_pages/home/homeScreen.dart';
 
 import 'screens/signuppages/LoginActivity.dart';
 import 'screens/nevigation_pages/profile/ProfileActivity.dart';
 import 'screens/signuppages/SignUpActivity.dart';
 import 'firebase_options.dart';
+late Size mq;
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
+
   );
 
   runApp(const MyApp());
@@ -31,7 +34,7 @@ class MyApp extends StatelessWidget {
           useMaterial3: true,
         ),
         debugShowCheckedModeBanner: false,
-        home: ProfileActivity());
+        home:  HomePages());
   }
 }
 

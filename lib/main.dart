@@ -4,9 +4,9 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/widgets.dart';
 import 'package:mindskape/helper.dart';
 
-import 'LoginActivity.dart';
-import 'ProfileActivity.dart';
-import 'SignUpActivity.dart';
+import 'screens/signuppages/LoginActivity.dart';
+import 'screens/nevigation_pages/profile/ProfileActivity.dart';
+import 'screens/signuppages/SignUpActivity.dart';
 import 'firebase_options.dart';
 
 Future<void> main() async {

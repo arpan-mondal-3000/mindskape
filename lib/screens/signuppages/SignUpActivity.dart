@@ -2,10 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/widgets.dart';
-import 'package:mindskape/LoginActivity.dart';
+import 'package:mindskape/screens/signuppages/LoginActivity.dart';
 import 'package:mindskape/helper.dart';
 import 'package:mindskape/main.dart';
-import 'firebase_options.dart';
+import '../../firebase_options.dart';
 
 class SignUpActivity extends StatelessWidget {
   SignUpActivity({super.key});

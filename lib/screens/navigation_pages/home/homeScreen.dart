@@ -43,9 +43,9 @@ class _HomePagesState extends State<HomePages> {
                 Row(
                   children: [
                     IconButton(onPressed: (){}, icon: Icon(Icons.call,size: 40,)),
-                   // CircleAvatar( backgroundColor: Colors.white70,child:  IconButton(onPressed: (){}, icon: Icon(Icons\\.notifications,size: Size(mq.width*.03,mq.height*.02),))),
+                   CircleAvatar( backgroundColor: Colors.white70,child:  IconButton(onPressed: (){}, icon: Icon(Icons.notifications,)),
 
-                  ],
+                   )],
                 )
               ],
             ),

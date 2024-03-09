@@ -5,7 +5,7 @@ import 'package:flutter/widgets.dart';
 import 'package:mindskape/helper.dart';
 
 import 'screens/signuppages/LoginActivity.dart';
-import 'screens/nevigation_pages/profile/ProfileActivity.dart';
+import 'screens/navigation_pages/profile/ProfileActivity.dart';
 import 'screens/signuppages/SignUpActivity.dart';
 import 'firebase_options.dart';
 

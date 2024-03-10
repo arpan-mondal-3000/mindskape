@@ -2,9 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/widgets.dart';
+
 import 'package:mindskape/helper.dart';
 import 'package:mindskape/screens/navigation_pages/home/homeScreen.dart';
 import 'package:mindskape/screens/navigation_pages/categories/categoriesScreen.dart';
+import 'package:mindskape/screens/navigation_pages/education/educationScreen.dart';
 
 import 'screens/signuppages/LoginActivity.dart';
 import 'screens/navigation_pages/profile/ProfileActivity.dart';
@@ -35,7 +37,7 @@ class MyApp extends StatelessWidget {
           useMaterial3: true,
         ),
         debugShowCheckedModeBanner: false,
-        home: CategoriesScreen());
+        home: EducationScreen());
   }
 }
 

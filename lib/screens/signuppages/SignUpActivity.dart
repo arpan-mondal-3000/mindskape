@@ -2,9 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/widgets.dart';
+import 'package:mindskape/screens/navigation_pages/profile/ProfileActivity.dart';
 import 'package:mindskape/screens/signuppages/LoginActivity.dart';
 import 'package:mindskape/helper.dart';
 import 'package:mindskape/main.dart';
+import '../../APIS/AuthenticationHelper.dart';
 import '../../firebase_options.dart';
 
 class SignUpActivity extends StatelessWidget {
@@ -16,6 +18,7 @@ class SignUpActivity extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    mq = MediaQuery.of(context).size;
     return Scaffold(
         /*appBar: AppBar(
           backgroundColor: Theme.of(context).colorScheme.inversePrimary,
@@ -38,7 +41,8 @@ class SignUpActivity extends StatelessWidget {
             height: double.maxFinite,
             decoration: BoxDecoration(
                 image: DecorationImage(
-                    image: AssetImage("assets/images/LoginBackground.jpg"),
+                    image: AssetImage("assets/images/Login&SignUpBg.jpg"),
+                    opacity: .7,
                     fit: BoxFit.cover)),
           ),
           Center(
@@ -67,8 +71,8 @@ class SignUpActivity extends StatelessWidget {
                       padding: const EdgeInsets.only(top: 20),
                       child: Container(
                           //contener of the all imafe textfield and button
-                          width: 350,
-                          height: 500,
+                          width: mq.width*.9,
+                          height:mq.height*.6,
                           alignment: Alignment.topCenter,
                           child: Column(
                             children: [
@@ -182,6 +186,34 @@ class SignUpActivity extends StatelessWidget {
                                         ))
                                   ],
                                 ),
+                              ),
+
+                              InkWell(
+                                onTap:(){Authentigation.SignInWithGoogle().then((value) => Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (_)=>ProfileActivity()), (route) => false));} ,
+                                child: Container(
+                                  width: mq.width*.6,
+                                 height: mq.width*.1,
+
+
+                                    decoration: BoxDecoration( color: CupertinoColors.white,borderRadius:BorderRadius.circular(50)),
+
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(3.0),
+                                      child: Row(
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        children: [
+                                          Image(
+                                            image: AssetImage(
+                                                "assets/images/google_search.png"),
+                                            width:30,
+                                            height: 30,
+                                          ),
+                                          SizedBox(width: 10,),
+                                          Text("Sign Up with ",style: TextStyle(fontSize: 15)),
+                                          Text("Google ",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 17),),
+                                        ],
+                                      ),
+                                    )),
                               )
                             ],
                           )),

@@ -38,7 +38,7 @@ class LoginActivity extends StatelessWidget {
             height: double.maxFinite,
             decoration: BoxDecoration(
                 image: DecorationImage(
-                    image: AssetImage("assets/images/LoginBackground.jpg"),
+                    image: AssetImage("assets/images/Login&SignUpBg.jpg"),opacity: .7,
                     fit: BoxFit.cover)),
           ),
           Center(

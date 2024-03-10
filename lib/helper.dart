@@ -89,4 +89,10 @@ class helper {
       ),
     );
   }
+
+  static showProgresssbar(BuildContext context){
+showDialog(context: context, builder: (BuildContext context)=>
+const Center(child: CircularProgressIndicator(),)
+);
+  }
 }

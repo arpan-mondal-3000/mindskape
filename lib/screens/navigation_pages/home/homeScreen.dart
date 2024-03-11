@@ -40,12 +40,21 @@ class _HomePagesState extends State<HomePages> {
                   ),
                 ),
 
-                Row(
-                  children: [
-                    IconButton(onPressed: (){}, icon: Icon(Icons.call,size: 40,)),
-                   CircleAvatar( backgroundColor: Colors.white70,child:  IconButton(onPressed: (){}, icon: Icon(Icons.notifications,)),
+                Padding(
+                  padding: const EdgeInsets.only(right: 5),
+                  child: Row(
+                    children: [
+                      IconButton(onPressed: (){}, icon: Icon(Icons.call,size: 40,)),
+                     CircleAvatar(
+                       backgroundColor: Colors.white70,
+                       child:  IconButton(
+                           onPressed: (){},
+                           icon: Icon(
+                             Icons.notifications,)
+                       ),
 
-                   )],
+                     )],
+                  ),
                 )
               ],
             ),

@@ -12,13 +12,15 @@ class helper {
         child: ElevatedButton(
             onPressed: callback,
             style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all(baccolor)
+              backgroundColor: MaterialStateProperty.all(baccolor),
+
             ),
             child: Text(
               name!,
               style: TextStyle(
                 fontSize: textsize,
                 color: textcolor,
+                fontWeight: FontWeight.w800,
               ),
             )));
   }
@@ -44,9 +46,6 @@ class helper {
 
           maxLines: 1,
           autofocus: false ,
-
-
-
           style: TextStyle(
 
             color: textcolor,
@@ -56,13 +55,10 @@ class helper {
           controller: controller,
           cursorHeight: 40,
 
-
-
-
           decoration: InputDecoration(
               hintText: hinttext,
               prefixIcon: icon,
-             isDense: true,
+              isDense: true,
 
 
               contentPadding: EdgeInsets.only(right:20 ,bottom: 10),

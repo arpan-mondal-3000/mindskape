@@ -95,4 +95,12 @@ showDialog(context: context, builder: (BuildContext context)=>
 const Center(child: CircularProgressIndicator(),)
 );
   }
+  static void showStackBaar(BuildContext context, String msg) {
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      content: Text(msg),
+      backgroundColor: Colors.blue.withOpacity(.7),
+      behavior: SnackBarBehavior.floating,
+    ));
+  }
+
 }

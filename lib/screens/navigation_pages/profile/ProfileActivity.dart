@@ -1,18 +1,29 @@
 import 'dart:ui';
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:mindskape/APIS/APIS.dart';
+import 'package:mindskape/APIS/AuthenticationHelper.dart';
+import 'package:mindskape/model/chatModel.dart';
+import 'package:mindskape/screens/signuppages/LoginActivity.dart';
+import 'package:mindskape/screens/signuppages/SignUpActivity.dart';
+
+import '../../../main.dart';
 
 class ProfileActivity extends StatefulWidget {
-  const ProfileActivity({super.key});
+  final ProfileDetail profileDetail;
+  const ProfileActivity({super.key, required this.profileDetail});
 
   @override
   State<ProfileActivity> createState() => _ProfileActivityState();
 }
 
 class _ProfileActivityState extends State<ProfileActivity> {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -70,22 +81,44 @@ class _ProfileActivityState extends State<ProfileActivity> {
                   thickness: 2,
                   height: 0,
                 ),
-                CircleAvatar(
-                  maxRadius: 85,
-                  backgroundColor: Colors.cyan.withOpacity(0),
-                  child: Icon(
-                    Icons.account_circle_outlined,
-                    size: 180,
-                    color: Colors.grey[700],
-                    fill: .5,
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(mq.height*.1),
+                  child: CachedNetworkImage(
+                    width: mq.height * .2,
+                    height: mq.height * .2,
+                    fit: BoxFit.fill,
+                    imageUrl: widget.profileDetail.image,
+                    placeholder: (context, url) => CircularProgressIndicator(),
+                    errorWidget: (context, url, error) =>
+                        CircleAvatar(
+                          maxRadius: 85,
+                          backgroundColor: Colors.cyan.withOpacity(0),
+                          child: Icon(
+                            Icons.account_circle_outlined,
+                            size: 180,
+                            color: Colors.grey[700],
+                            fill: .5,
+                          ),
+                        ),
                   ),
                 ),
+
                 const SizedBox(height: 10,),
-                const Text(
+                //frome email get the name
+                APIs.user!=null?Text(
+                widget.profileDetail.name,
+                  style: TextStyle(color: Color(0xff6C464E), fontSize: 20, fontWeight: FontWeight.bold),
+                ):
+               Text(
                   "Radhe Krishna",
                   style: TextStyle(color: Color(0xff6C464E), fontSize: 20, fontWeight: FontWeight.bold),
                 ),
-                const Text(
+
+                 APIs.user!=null?Text(
+                  widget.profileDetail.email,
+                   style: TextStyle(color: Color(0xff6C464E), fontSize: 15),
+                 ):
+                 Text(
                   "hareKrishna@gamil.com",
                   style: TextStyle(color: Color(0xff6C464E), fontSize: 15),
                 ),
@@ -180,21 +213,38 @@ class _ProfileActivityState extends State<ProfileActivity> {
                 const SizedBox(height: 150,),
 
                 // Logout
-                Container(
-                  width: double.maxFinite,
+                InkWell(
+                  onTap: () async {
+                    await APIs.auth.signOut().then((value) async {
 
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 15.0),
-                      child: Row(
-                        children: [
-                          FaIcon(FontAwesomeIcons.arrowRightFromBracket,color: const Color(0xffC82626),size: 30,shadows: [
-                            Shadow(color: Colors.purpleAccent.shade100,blurRadius: 10),
-                          ],),
-                          const SizedBox(width: 10,),
-                          const Text("Logout",style: TextStyle(color: Color(0xffC82626),fontSize: 20),),
-                        ],
+                      await GoogleSignIn().signOut().then((value) {
+                        //remove the progress bar
+
+                        //replacing homescreen by the loginscreen
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (BuildContext context) =>SignUpActivity() ));
+                      }
+                      );
+                    }
+                    );},
+                  child: Container(
+                    width: double.maxFinite,
+
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 15.0),
+                        child: Row(
+                          children: [
+                            FaIcon(FontAwesomeIcons.arrowRightFromBracket,color: const Color(0xffC82626),size: 30,shadows: [
+                              Shadow(color: Colors.purpleAccent.shade100,blurRadius: 10),
+                            ],),
+                            const SizedBox(width: 10,),
+                            const Text("Logout",style: TextStyle(color: Color(0xffC82626),fontSize: 20),),
+                          ],
+                        ),
                       ),
-                    ),
+                  ),
                 )
               ],
             ),

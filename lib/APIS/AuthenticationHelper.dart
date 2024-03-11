@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
 
@@ -7,6 +8,8 @@ import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:mindskape/APIS/APIS.dart';
 import 'package:mindskape/helper.dart';
+import 'package:mindskape/model/chatModel.dart';
+import 'package:mindskape/screens/navigation_pages/profile/ProfileActivity.dart';
 
 class Authentigation{
   signup(String email, String pass) async {
@@ -22,34 +25,35 @@ class Authentigation{
       }
     }
   }
-  _handlarGoogle( BuildContext context) {}
+
+ static handlarGoogle( BuildContext context,ProfileDetail profileDetail) {
     //calling progress bar
 
 
-// helper.showProgresssbar(context);
-//     //if user is null so this is error handleer
-//     SignInWithGoogle().then((user) async => {
-//       Navigator.pop(context),
-//       if (user != null)
-//         {
-//           if (await APIs.useresist())
-//             {// navigate to the home page and clear all stack
-//               Navigator.pushAndRemoveUntil(
-//                 context,
-//                 MaterialPageRoute(
-//                     builder: (BuildContext context) => HomePage()),(route) => false,)
-//             }
-//           else
-//             {// if useer are not created and the first creat so cll the craatuser function
-//               //then  navigate to the home page and clear all stack
-//               await APIs.creatuser().then((value) => Navigator.pushAndRemoveUntil(
-//                 context,
-//                 MaterialPageRoute(
-//                     builder: (BuildContext context) => HomePage()),(route) => false,))
-//             }
-//         }
-//     });
-//   }
+helper.showProgresssbar(context);
+    //if user is null so this is error handleer
+    SignInWithGoogle().then((user) async => {
+      Navigator.pop(context),
+      if (user != null)
+        {
+          if (await APIs.useresist())
+            {// navigate to the home page and clear all stack
+              Navigator.pushAndRemoveUntil(
+                context,
+                MaterialPageRoute(
+                    builder: (BuildContext context) => ProfileActivity(profileDetail:profileDetail)),(route) => false,)
+            }
+          else
+            {// if useer are not created and the first creat so cll the craatuser function
+              //then  navigate to the home page and clear all stack
+              await APIs.creatuser().then((value) => Navigator.pushAndRemoveUntil(
+                context,
+                MaterialPageRoute(
+                    builder: (BuildContext context) => ProfileActivity(profileDetail:profileDetail)),(route) => false,))
+            }
+        }
+    });
+  }
 
   //google login function
 
@@ -67,7 +71,9 @@ class Authentigation{
       );
       UserCredential userCredential =
       await FirebaseAuth.instance.signInWithCredential(credential);
+      log("dataFrom SignwithGoogle: ${(userCredential.user)}");
       return userCredential;
+
     } catch (e) {
       log("SignInWithGoogle : $e");
 

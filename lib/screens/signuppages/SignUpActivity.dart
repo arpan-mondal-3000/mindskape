@@ -1,7 +1,10 @@
+import 'dart:developer';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/widgets.dart';
+import 'package:mindskape/APIS/APIS.dart';
 import 'package:mindskape/screens/navigation_pages/profile/ProfileActivity.dart';
 import 'package:mindskape/screens/signuppages/LoginActivity.dart';
 import 'package:mindskape/helper.dart';
@@ -9,13 +12,25 @@ import 'package:mindskape/main.dart';
 import '../../APIS/AuthenticationHelper.dart';
 import '../../firebase_options.dart';
 
-class SignUpActivity extends StatelessWidget {
+class SignUpActivity extends StatefulWidget {
   SignUpActivity({super.key});
 
-  var user_profile_controlar = TextEditingController();
-  var email_profile_controlar = TextEditingController();
-  var password_profile_controlar = TextEditingController();
+  @override
+  State<SignUpActivity> createState() => _SignUpActivityState();
+}
 
+class _SignUpActivityState extends State<SignUpActivity> {
+  var user_profile_controlar = TextEditingController();
+
+  var email_profile_controlar = TextEditingController();
+
+  var password_profile_controlar = TextEditingController();
+@override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    APIs.getSelfInfo();
+  }
   @override
   Widget build(BuildContext context) {
     mq = MediaQuery.of(context).size;
@@ -189,7 +204,11 @@ class SignUpActivity extends StatelessWidget {
                               ),
 
                               InkWell(
-                                onTap:(){Authentigation.SignInWithGoogle().then((value) => Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (_)=>ProfileActivity()), (route) => false));} ,
+                                onTap:(){
+                                  //to call google login funtion
+
+                                  Authentigation.handlarGoogle(context,APIs.me);
+                                  } ,
                                 child: Container(
                                   width: mq.width*.6,
                                  height: mq.width*.1,

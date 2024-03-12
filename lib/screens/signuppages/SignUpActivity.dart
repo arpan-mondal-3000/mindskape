@@ -33,7 +33,7 @@ class _SignUpActivityState extends State<SignUpActivity> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    APIs.getSelfInfo();
+
   }
   handlarGoogle() {
     //calling progress bar

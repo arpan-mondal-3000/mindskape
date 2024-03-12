@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:mindskape/screens/navigation_pages/categories/journalFunction.dart';
 import '../../../main.dart';
 
 class CategoriesScreen extends StatelessWidget {
@@ -134,21 +135,26 @@ class CategoriesScreen extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Container(
-                          alignment: Alignment.center,
-                          width: 150,
-                          height: 150,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20.0),
-                            color: Colors.white.withOpacity(0.7),
-                          ),
-                          child: const Text(
-                            'JOURNAL',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontSize: 24,
-                              color: Color(0xff6C464E),
-                              fontWeight: FontWeight.w500,
+                        InkWell(
+                          onTap: (){
+                            Navigator.push(context, MaterialPageRoute(builder: (_)=>JournalScreen()));
+                          },
+                          child: Container(
+                            alignment: Alignment.center,
+                            width: 150,
+                            height: 150,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20.0),
+                              color: Colors.white.withOpacity(0.7),
+                            ),
+                            child: const Text(
+                              'JOURNAL',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontSize: 24,
+                                color: Color(0xff6C464E),
+                                fontWeight: FontWeight.w500,
+                              ),
                             ),
                           ),
                         ),

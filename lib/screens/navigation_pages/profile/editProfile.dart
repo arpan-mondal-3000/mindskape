@@ -98,7 +98,6 @@ class _EditProfileState extends State<EditProfile> {
                           right: 0,
                           child: MaterialButton(
                             onPressed: () {
-                              helper.showProgresssbar(context);
                             },
                             shape: CircleBorder(),
                             elevation: 1,
@@ -187,7 +186,7 @@ class _EditProfileState extends State<EditProfile> {
                           _fromkey.currentState!.save();
 
                           //then update in the firebasefireStore
-                          APIs.updateUser();
+                          APIs.updateUser().then((value) => helper.showStackBaar(context, "Successfully Update"));
                           log("ram is validared");
                         }
                         },

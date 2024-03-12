@@ -30,7 +30,7 @@ class _EducationScreenState extends State<EducationScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
-                    padding: const EdgeInsets.fromLTRB(20, 10, 0, 5),
+                    padding: const EdgeInsets.fromLTRB(10, 10, 0, 5),
                     child: const Text(
                         'MENTAL HEALTH EDUCATION',
                         style: TextStyle(

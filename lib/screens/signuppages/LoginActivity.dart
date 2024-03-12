@@ -22,7 +22,7 @@ class LoginActivity extends StatelessWidget {
           title: Text(widget.title),
         ),*/
         body: Container(
-      // main contener
+      // main container
       width: double.maxFinite,
       height: double.maxFinite,
       /* decoration:  BoxDecoration(
@@ -46,27 +46,27 @@ class LoginActivity extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Container(
-                      margin: EdgeInsets.only(bottom: 30),
-                      alignment: Alignment.topCenter,
-                      child: Text(
-                        "LOGIN",
-                        style: TextStyle(
-                          fontSize: 30,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                        ),
-                      )),
+                  // Container(
+                  //     margin: EdgeInsets.only(bottom: 30),
+                  //     alignment: Alignment.topCenter,
+                  //     child: Text(
+                  //       "LOGIN",
+                  //       style: TextStyle(
+                  //         fontSize: 30,
+                  //         fontWeight: FontWeight.bold,
+                  //         color: Colors.white,
+                  //       ),
+                  //     )),
                   Card(
                     shape: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(50),
-                        borderSide: BorderSide(color: Colors.black87)),
-                    color: Colors.white.withOpacity(.3),
+                        borderRadius: BorderRadius.circular(23),
+                    ),
+                    color: Color(0xffF8F8F0).withOpacity(.4),
                     elevation: 60,
                     child: Padding(
                       padding: const EdgeInsets.only(top: 20),
                       child: Container(
-                          //contener of the all imafe textfield and button
+                          //container of the all image, text-field and button
                           width: 350,
                           height: 400,
                           alignment: Alignment.topCenter,
@@ -75,7 +75,7 @@ class LoginActivity extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 // User Image profile circleAvatar......................
-                                //dicable due to singin page######
+                                //disable due to sign in page######
                                 /* CircleAvatar(
                                       maxRadius: 65,
                                       backgroundColor: Colors.cyan.withOpacity(0.0),
@@ -92,7 +92,7 @@ class LoginActivity extends StatelessWidget {
                                 helper.TextFieldSample(
                                     user_profile_controlar,
                                     "userid",
-                                    30,
+                                    15,
                                     25,
                                     TextInputType.text,
                                     Colors.black,
@@ -124,7 +124,7 @@ class LoginActivity extends StatelessWidget {
                                 helper.TextFieldSample(
                                     password_profile_controlar,
                                     "password",
-                                    30,
+                                    15,
                                     25,
                                     TextInputType.text,
                                     Colors.black,
@@ -144,8 +144,8 @@ class LoginActivity extends StatelessWidget {
                                       MaterialPageRoute(
                                           builder: (BuildContext context) =>
                                               MyHomePage(title: "Home Page")));
-                                }, "SIGNIN", Colors.cyanAccent.shade100,
-                                    Colors.blue, 20),
+                                }, "LOGIN", Color(0xffD3F5FF).withOpacity(.8),
+                                    Color(0xff033B86), 20,),
                                 SizedBox(
                                   height: 10,
                                 ),
@@ -165,11 +165,10 @@ class LoginActivity extends StatelessWidget {
                                             style: TextStyle(
                                                 fontWeight: FontWeight.bold,
                                                 fontSize: 16,
-                                                color:
-                                                    Colors.blue.withOpacity(.8),
+                                                color: Color(0xff033B86),
                                                 decoration:
                                                     TextDecoration.underline,
-                                                decorationColor: Colors.blue),
+                                                decorationColor: Color(0xff033B86)),
                                           ))
                                     ],
                                   ),

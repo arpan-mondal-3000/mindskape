@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mindskape/APIS/APIS.dart';
 
 import '../../../main.dart';
 
@@ -33,7 +34,7 @@ class _HomePagesState extends State<HomePages> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
 
-                      Text("Hi, RADHE!!",style: TextStyle(fontSize: 26,fontWeight: FontWeight.bold,color: Color(0xff6C464E)),),
+                      Text(APIs.me.name,style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Color(0xff6C464E)),),
                       Text("09 March,2024",style: TextStyle(fontSize: 16,fontWeight: FontWeight.w700,color: Color(0xff6C464E))),
                     ],
 

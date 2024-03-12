@@ -1,9 +1,12 @@
 import 'dart:developer';
+import 'dart:io';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/widgets.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:mindskape/APIS/APIS.dart';
 import 'package:mindskape/screens/navigation_pages/profile/ProfileActivity.dart';
 import 'package:mindskape/screens/signuppages/LoginActivity.dart';
@@ -11,6 +14,7 @@ import 'package:mindskape/helper.dart';
 import 'package:mindskape/main.dart';
 import '../../APIS/AuthenticationHelper.dart';
 import '../../firebase_options.dart';
+import '../BotttomNevigation bar/BottomNevigation.dart';
 
 class SignUpActivity extends StatefulWidget {
   SignUpActivity({super.key});
@@ -30,6 +34,59 @@ class _SignUpActivityState extends State<SignUpActivity> {
     // TODO: implement initState
     super.initState();
     APIs.getSelfInfo();
+  }
+  handlarGoogle() {
+    //calling progress bar
+
+
+    helper.showProgresssbar(context);
+    //if user is null so this is error handleer
+    SignInWithGoogle().then((user) async => {
+      Navigator.pop(context),
+      if (user != null)
+        {
+          if (await APIs.useresist())
+            {// navigate to the home page and clear all stack
+              Navigator.pushAndRemoveUntil(
+                context,
+                MaterialPageRoute(
+                    builder: (BuildContext context) => BottomsampleNevigation()),(route) => false,)
+            }
+          else
+            {// if useer are not created and the first creat so cll the craatuser function
+              //then  navigate to the home page and clear all stack
+              await APIs.creatuser().then((value) => Navigator.pushAndRemoveUntil(
+                context,
+                MaterialPageRoute(
+                    builder: (BuildContext context) => BottomsampleNevigation()),(route) => false,))
+            }
+        }
+    });
+  }
+
+  //google login function
+
+  static Future<UserCredential?> SignInWithGoogle() async {
+    //if during signin any problem orrer so try catch
+    try {
+      await InternetAddress.lookup("google.com");
+      GoogleSignInAccount? googleSignInAccount = await GoogleSignIn().signIn();
+      GoogleSignInAuthentication? googleSignInAuthentication =
+      await googleSignInAccount?.authentication;
+
+      AuthCredential credential = GoogleAuthProvider.credential(
+        accessToken: googleSignInAuthentication?.accessToken,
+        idToken: googleSignInAuthentication?.idToken,
+      );
+      UserCredential userCredential =
+      await FirebaseAuth.instance.signInWithCredential(credential);
+      log("dataFrom SignwithGoogle: ${(userCredential.user)}");
+      return userCredential;
+
+    } catch (e) {
+      log("SignInWithGoogle : $e");
+
+    }
   }
   @override
   Widget build(BuildContext context) {
@@ -207,7 +264,7 @@ class _SignUpActivityState extends State<SignUpActivity> {
                                 onTap:(){
                                   //to call google login funtion
 
-                                  Authentigation.handlarGoogle(context,APIs.me);
+                                  handlarGoogle();
                                   } ,
                                 child: Container(
                                   width: mq.width*.6,

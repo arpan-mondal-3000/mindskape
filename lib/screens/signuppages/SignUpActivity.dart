@@ -122,29 +122,18 @@ class _SignUpActivityState extends State<SignUpActivity> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Container(
-                      margin: EdgeInsets.only(bottom: 30),
-                      alignment: Alignment.topCenter,
-                      child: Text(
-                        "Sign UP",
-                        style: TextStyle(
-                          fontSize: 30,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                        ),
-                      )),
                   Card(
                     shape: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(50),
+                        borderRadius: BorderRadius.circular(23),
                         borderSide: BorderSide(color: Colors.black87)),
-                    color: Colors.white.withOpacity(.3),
+                    color: Color(0xffF8F8F0).withOpacity(.4),
                     elevation: 60,
                     child: Padding(
                       padding: const EdgeInsets.only(top: 20),
                       child: Container(
                           //contener of the all imafe textfield and button
                           width: mq.width*.9,
-                          height:mq.height*.6,
+                          // height:mq.height*.7,
                           alignment: Alignment.topCenter,
                           child: Column(
                             children: [
@@ -165,7 +154,7 @@ class _SignUpActivityState extends State<SignUpActivity> {
                               helper.TextFieldSample(
                                   user_profile_controlar,
                                   "userid",
-                                  30,
+                                  15,
                                   25,
                                   TextInputType.text,
                                   Colors.black,
@@ -181,7 +170,7 @@ class _SignUpActivityState extends State<SignUpActivity> {
                               helper.TextFieldSample(
                                   email_profile_controlar,
                                   "email",
-                                  30,
+                                  15,
                                   25,
                                   TextInputType.text,
                                   Colors.black,
@@ -197,7 +186,7 @@ class _SignUpActivityState extends State<SignUpActivity> {
                               helper.TextFieldSample(
                                   password_profile_controlar,
                                   "password",
-                                  30,
+                                  15,
                                   25,
                                   TextInputType.text,
                                   Colors.black,
@@ -217,10 +206,41 @@ class _SignUpActivityState extends State<SignUpActivity> {
                                     MaterialPageRoute(
                                         builder: (BuildContext context) =>
                                             MyHomePage(title: "Home Page")));
-                              }, "SIGN UP", Colors.cyanAccent.shade100,
-                                  Colors.blue, 20),
+                              }, "SIGN UP", Color(0xffD3F5FF),
+                                  Color(0xff033B86), 20),
                               SizedBox(
-                                height: 10,
+                                height: 20,
+                              ),
+                              InkWell(
+                                onTap:(){
+                                  //to call google login funtion
+
+                                  handlarGoogle();
+                                } ,
+                                child: Container(
+                                    width: mq.width*.6,
+                                    height: mq.width*.1,
+
+
+                                    decoration: BoxDecoration( color: CupertinoColors.white,borderRadius:BorderRadius.circular(50)),
+
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(3.0),
+                                      child: Row(
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        children: [
+                                          Image(
+                                            image: AssetImage(
+                                                "assets/images/google_search.png"),
+                                            width:30,
+                                            height: 30,
+                                          ),
+                                          SizedBox(width: 10,),
+                                          Text("Sign Up with ",style: TextStyle(fontSize: 15)),
+                                          Text("Google ",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 17),),
+                                        ],
+                                      ),
+                                    )),
                               ),
 
                               Center(
@@ -250,47 +270,15 @@ class _SignUpActivityState extends State<SignUpActivity> {
                                           style: TextStyle(
                                               fontWeight: FontWeight.bold,
                                               fontSize: 16,
-                                              color:
-                                                  Colors.blue.withOpacity(.8),
+                                              color: Color(0xff033B86),
                                               decoration:
                                                   TextDecoration.underline,
-                                              decorationColor: Colors.blue),
+                                              decorationColor: Color(0xff033B86)),
                                         ))
                                   ],
                                 ),
                               ),
-
-                              InkWell(
-                                onTap:(){
-                                  //to call google login funtion
-
-                                  handlarGoogle();
-                                  } ,
-                                child: Container(
-                                  width: mq.width*.6,
-                                 height: mq.width*.1,
-
-
-                                    decoration: BoxDecoration( color: CupertinoColors.white,borderRadius:BorderRadius.circular(50)),
-
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(3.0),
-                                      child: Row(
-                                        mainAxisAlignment: MainAxisAlignment.center,
-                                        children: [
-                                          Image(
-                                            image: AssetImage(
-                                                "assets/images/google_search.png"),
-                                            width:30,
-                                            height: 30,
-                                          ),
-                                          SizedBox(width: 10,),
-                                          Text("Sign Up with ",style: TextStyle(fontSize: 15)),
-                                          Text("Google ",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 17),),
-                                        ],
-                                      ),
-                                    )),
-                              )
+                              SizedBox(height: 20,)
                             ],
                           )),
                     ),

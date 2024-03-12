@@ -18,7 +18,7 @@ class _HomePagesState extends State<HomePages> {
   void initState() {
     // TODO: implement initState
     super.initState();
-   
+   log('message${APIs.me.name}');
   }
   @override
   Widget build(BuildContext context) {

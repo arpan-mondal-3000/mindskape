@@ -29,6 +29,7 @@ class ProfileActivity extends StatefulWidget {
 class _ProfileActivityState extends State<ProfileActivity> {
   initState(){
     setState(() {
+      APIs.getSelfInfo();
 
     });
   }

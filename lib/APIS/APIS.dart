@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:mindskape/model/chatModel.dart';
 //ALL APIS
@@ -9,6 +10,7 @@ class APIs {
   static FirebaseAuth auth = FirebaseAuth.instance;
   static FirebaseStorage firebaseStorage = FirebaseStorage.instance;
   static FirebaseFirestore firestore = FirebaseFirestore.instance;
+  static FirebaseDatabase database=FirebaseDatabase.instance;
   static User get user => auth.currentUser!;
   static   ProfileDetail me=ProfileDetail(image: "https://lh3.googleusercontent.com/a/ACg8ocJ_uaKQMOyf6YJhQLSrXkQ56Y3iQ3qEFi_kgapCBmmE=s96-c", about: "ram ram", name: "radhe radhe", createdAt: "", isOnline: false, id: user.uid, pushToken: '', email: "subhadippratihar09@gmail.com");
 
@@ -66,6 +68,13 @@ class APIs {
       'about':me.about,
     });
   }
-
+  // static Future<void> getJournal() async {
+  //   await final ref = FirebaseDatabase.instance.ref("Journal");
+  //   final snapshot = await ref.child().get();
+  //   if (snapshot.exists) {
+  //   print(snapshot.value);
+  //   } else {
+  //   print('No data available.');
+  //   }
 
 }

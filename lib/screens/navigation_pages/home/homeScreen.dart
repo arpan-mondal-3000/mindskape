@@ -1,5 +1,9 @@
-import 'package:flutter/material.dart';
+import 'dart:developer';
 
+import 'package:flutter/material.dart';
+import 'package:mindskape/screens/navigation_pages/profile/ProfileActivity.dart';
+
+import '../../../APIS/APIS.dart';
 import '../../../main.dart';
 
 class HomePages extends StatefulWidget {
@@ -10,8 +14,18 @@ class HomePages extends StatefulWidget {
 }
 
 class _HomePagesState extends State<HomePages> {
+  initState(){
+    setState(() {
+     // APIs.getSelfInfo();
+
+
+    });
+  }
   @override
   Widget build(BuildContext context) {
+
+
+
     mq = MediaQuery.of(context).size;
     return Scaffold(
 
@@ -33,7 +47,8 @@ class _HomePagesState extends State<HomePages> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
 
-                      Text("Hi, RADHE!!",style: TextStyle(fontSize: 26,fontWeight: FontWeight.bold,color: Color(0xff6C464E)),),
+
+                      Text(APIs.me.name,style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Color(0xff6C464E)),),
                       Text("09 March,2024",style: TextStyle(fontSize: 16,fontWeight: FontWeight.w700,color: Color(0xff6C464E))),
                     ],
 
@@ -42,10 +57,20 @@ class _HomePagesState extends State<HomePages> {
 
                 Row(
                   children: [
-                    IconButton(onPressed: (){}, icon: Icon(Icons.call,size: 40,)),
+                    IconButton(onPressed: (){
+                      setState(() {
+
+                      Navigator.push(context, MaterialPageRoute(builder: (_)=>ProfileActivity(profileDetail: APIs.me)));
+                      });
+
+                      log("${APIs.me.name}");
+
+                    }, icon: Icon(Icons.call,size: 40,)),
                    CircleAvatar( backgroundColor: Colors.white70,child:  IconButton(onPressed: (){}, icon: Icon(Icons.notifications,)),
 
-                   )],
+                   )
+
+                  ,SizedBox(width: mq.width*.03,)],
                 )
               ],
             ),

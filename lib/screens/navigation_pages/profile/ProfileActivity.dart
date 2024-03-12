@@ -1,14 +1,18 @@
+import 'dart:developer';
 import 'dart:ui';
 
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:mindskape/APIS/APIS.dart';
 import 'package:mindskape/APIS/AuthenticationHelper.dart';
 import 'package:mindskape/model/chatModel.dart';
+import 'package:mindskape/screens/navigation_pages/profile/editProfile.dart';
 import 'package:mindskape/screens/signuppages/LoginActivity.dart';
 import 'package:mindskape/screens/signuppages/SignUpActivity.dart';
 
@@ -23,9 +27,16 @@ class ProfileActivity extends StatefulWidget {
 }
 
 class _ProfileActivityState extends State<ProfileActivity> {
+  initState(){
+    setState(() {
+
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
+
+
     return Scaffold(
       body: Container(
         width: double.maxFinite,
@@ -54,7 +65,7 @@ class _ProfileActivityState extends State<ProfileActivity> {
                       height: 90,
                       // color: Colors.yellowAccent,
 
-                      child: const Stack(
+                      child:  Stack(
                         children: [
                           Positioned(
                               bottom: 0,
@@ -69,9 +80,21 @@ class _ProfileActivityState extends State<ProfileActivity> {
                           Positioned(
                               right: 10,
                               bottom: 10,
-                              child: FaIcon(
-                                FontAwesomeIcons.penToSquare,
-                                size: 30,
+                              child: InkWell(
+                                onTap: (){
+                                  setState(() {
+                                    log("${widget.profileDetail.name}");
+                                  });
+                                },
+                                child: InkWell(
+                                  onTap: (){
+                                   Navigator.push(context, MaterialPageRoute(builder: (_)=>EditProfile(profileDetail: APIs.me)));
+                                  },
+                                  child: FaIcon(
+                                    FontAwesomeIcons.penToSquare,
+                                    size: 30,
+                                  ),
+                                ),
                               ))
                         ],
                       )),
@@ -87,7 +110,7 @@ class _ProfileActivityState extends State<ProfileActivity> {
                     width: mq.height * .2,
                     height: mq.height * .2,
                     fit: BoxFit.fill,
-                    imageUrl: widget.profileDetail.image,
+                    imageUrl: APIs.me.image,
                     placeholder: (context, url) => CircularProgressIndicator(),
                     errorWidget: (context, url, error) =>
                         CircleAvatar(
@@ -106,7 +129,7 @@ class _ProfileActivityState extends State<ProfileActivity> {
                 const SizedBox(height: 10,),
                 //frome email get the name
                 APIs.user!=null?Text(
-                widget.profileDetail.name,
+                APIs.me.name,
                   style: TextStyle(color: Color(0xff6C464E), fontSize: 20, fontWeight: FontWeight.bold),
                 ):
                Text(
@@ -115,7 +138,7 @@ class _ProfileActivityState extends State<ProfileActivity> {
                 ),
 
                  APIs.user!=null?Text(
-                  widget.profileDetail.email,
+                  APIs.me.email,
                    style: TextStyle(color: Color(0xff6C464E), fontSize: 15),
                  ):
                  Text(
@@ -215,20 +238,10 @@ class _ProfileActivityState extends State<ProfileActivity> {
                 // Logout
                 InkWell(
                   onTap: () async {
-                    await APIs.auth.signOut().then((value) async {
-
-                      await GoogleSignIn().signOut().then((value) {
-                        //remove the progress bar
-
-                        //replacing homescreen by the loginscreen
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (BuildContext context) =>SignUpActivity() ));
-                      }
-                      );
-                    }
-                    );},
+                    await GoogleSignIn().signOut();
+                    FirebaseAuth.instance.signOut();
+                    print("successfully logout");
+                    Navigator.push(context, MaterialPageRoute(builder: (context) =>SignUpActivity()));},
                   child: Container(
                     width: double.maxFinite,
 

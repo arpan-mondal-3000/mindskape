@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -8,7 +10,7 @@ class APIs {
   static FirebaseStorage firebaseStorage = FirebaseStorage.instance;
   static FirebaseFirestore firestore = FirebaseFirestore.instance;
   static User get user => auth.currentUser!;
-  static late  ProfileDetail me;
+  static   ProfileDetail me=ProfileDetail(image: "https://lh3.googleusercontent.com/a/ACg8ocJ_uaKQMOyf6YJhQLSrXkQ56Y3iQ3qEFi_kgapCBmmE=s96-c", about: "ram ram", name: "radhe radhe", createdAt: "", isOnline: false, id: user.uid, pushToken: '', email: "subhadippratihar09@gmail.com");
 
   static Future<bool> useresist() async {
     return (await firestore
@@ -16,19 +18,22 @@ class APIs {
         .doc(user.uid)
         .get())
         .exists;
-  }static Future<void> getSelfInfo() async {
+  }static void getSelfInfo()  {
 
-    await firestore
+    firestore
         .collection("Users")
         .doc(user.uid)
-        .get().then((value) async {
+        .get().then((value) {
       if(value.exists){
+    log("krishna: hare krishna hare krishna${value.data()} ${value.exists}");
         me=ProfileDetail.fromJson(value.data()!);
       }else{
-        await creatuser().then((value) => getSelfInfo());
+        log("radhe: hare krishna hare krishna");
+         creatuser().then((value) => getSelfInfo());
+
       }
     });
-
+    log("Ram: hare krishna hare krishna");
   }
 
   static final time = DateTime
@@ -50,6 +55,16 @@ class APIs {
         .collection("Users")
         .doc(user.uid)
         .set(chatuser.toJson());
+  }
+//for updating users
+  static Future<void> updateUser() async {
+   await firestore
+        .collection("Users")
+        .doc(user.uid)
+        .update({
+      'name':me.name,
+      'about':me.about,
+    });
   }
 
 

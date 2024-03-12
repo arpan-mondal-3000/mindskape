@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mindskape/screens/navigation_pages/categories/journalFunction.dart';
 import '../../../main.dart';

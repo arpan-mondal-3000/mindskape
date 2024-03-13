@@ -1,10 +1,12 @@
 import 'dart:developer';
 
+import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:mindskape/APIS/APIS.dart';
+import 'package:mindskape/helper.dart';
 import 'package:mindskape/screens/navigation_pages/categories/WriteJournal.dart';
 
 import '../profile/editProfile.dart';
@@ -73,7 +75,7 @@ class _JournalScreenState extends State<JournalScreen> {
               const Divider(
                 color: Colors.black,
                 thickness: 2,
-                height: 0,
+                height: 1,
               ),
 
 
@@ -100,6 +102,30 @@ class _JournalScreenState extends State<JournalScreen> {
                     );
                 },
               ),
+              /*child: StreamBuilder(stream: APIs.database.ref("Journal").child(APIs.auth.currentUser!.uid).onValue, builder: (context,AsyncSnapshot<DatabaseEvent> snapshot){
+
+         if(snapshot.hasData){
+                // Navigator.pop(context)
+                // assert(true);
+                //
+                // //create a map to snapshort data store
+                // Map<dynamic,dynamic> map=snapshot.data!.snapshot.value as dynamic;
+                //
+                // //create a list to stoere the map data in the from of list
+                // List<dynamic> list=[];
+                // list.clear();
+                // list=map.values.toList();
+                return ListView.builder(
+                  itemCount: snapshot.data!.snapshot.children.length,
+                  itemBuilder: (context, index) {
+                    return
+
+                      ListTile(
+                        // title: Text(list[index]['title']),
+                      );
+                  },);
+              }
+              },),*/
             )
 
 

@@ -1,5 +1,15 @@
 import 'package:flutter/material.dart';
 import '../../../main.dart';
+import 'package:url_launcher/url_launcher.dart';
+
+void launchURL(Uri url) async {
+  if (await canLaunchUrl(url)) {
+    await launchUrl(url);
+  } else {
+    throw 'Could not launch $url';
+  }
+}
+
 
 class NewsScreen extends StatefulWidget {
   const NewsScreen({super.key});
@@ -9,8 +19,13 @@ class NewsScreen extends StatefulWidget {
 }
 
 class _NewsScreenState extends State<NewsScreen> {
+
+  dynamic articles = [];
+
   @override
   Widget build(BuildContext context) {
+    articles = ModalRoute.of(context)?.settings.arguments;
+    print(articles);
     mq = MediaQuery
         .of(context)
         .size;
@@ -46,6 +61,51 @@ class _NewsScreenState extends State<NewsScreen> {
                   color: Colors.black,
                   thickness: 2,
                   height: 0,
+                ),
+
+                Expanded(
+                    child: ListView.builder(
+                      itemCount: articles.length,
+                      itemBuilder: (context, index){
+                        return InkWell(
+                          onTap: () => launchUrl(Uri.parse(articles[index][1])),
+                          child: Container(
+                            margin: const EdgeInsets.fromLTRB(20, 20, 20, 0),
+                            padding: const EdgeInsets.all(10),
+                            decoration: BoxDecoration(
+                              color: Colors.white.withOpacity(.6),
+                              borderRadius: BorderRadius.circular(10.0),
+                            ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Container(
+                                  height: 200,
+                                  width: 400,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10.0),
+                                    image: DecorationImage(
+                                      image: NetworkImage(articles[index][2],),
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                                ),
+                                const SizedBox(height: 10,),
+                                Text(
+                                    articles[index][0],
+                                    style: const TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                ),
+                                const SizedBox(height: 5,),
+                                Text(articles[index][3])
+                              ],
+                            ),
+                          ),
+                        );
+                      },
+                    ),
                 ),
               ],
             ),

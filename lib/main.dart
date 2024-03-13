@@ -8,6 +8,8 @@ import 'package:mindskape/screens/SplaceScreen.dart';
 import 'package:mindskape/screens/navigation_pages/home/homeScreen.dart';
 import 'package:mindskape/screens/navigation_pages/categories/categoriesScreen.dart';
 import 'package:mindskape/screens/navigation_pages/education/educationScreen.dart';
+import 'package:mindskape/screens/navigation_pages/news/news_screen.dart';
+import 'package:mindskape/screens/navigation_pages/news/news_loading_screen.dart';
 
 import 'screens/signuppages/LoginActivity.dart';
 import 'screens/navigation_pages/profile/ProfileActivity.dart';
@@ -38,7 +40,13 @@ class MyApp extends StatelessWidget {
           useMaterial3: true,
         ),
         debugShowCheckedModeBanner: false,
-        home: SplaceScreen());
+        initialRoute: '/',
+        routes: {
+          '/': (context) => const SplaceScreen(),
+          '/newsLoading': (context) => const Loading(),
+          '/news': (context) => const NewsScreen(),
+      },
+    );
   }
 }
 

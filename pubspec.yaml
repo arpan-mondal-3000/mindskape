@@ -21,6 +21,9 @@ dependencies:
   flutter_profile_picture: ^2.0.0
   cached_network_image: ^3.3.1
   firebase_database:
+  http: ^1.2.1
+  flutter_spinkit: ^5.2.0
+  url_launcher: ^6.2.5
 
 
 

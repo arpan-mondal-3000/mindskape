@@ -5,6 +5,7 @@ import 'package:flutter/widgets.dart';
 
 import 'package:mindskape/helper.dart';
 import 'package:mindskape/screens/SplaceScreen.dart';
+import 'package:mindskape/screens/navigation_pages/education/EducationLoadUrl.dart';
 import 'package:mindskape/screens/navigation_pages/home/homeScreen.dart';
 import 'package:mindskape/screens/navigation_pages/categories/categoriesScreen.dart';
 import 'package:mindskape/screens/navigation_pages/education/educationScreen.dart';
@@ -40,12 +41,13 @@ class MyApp extends StatelessWidget {
           useMaterial3: true,
         ),
         debugShowCheckedModeBanner: false,
-        initialRoute: '/',
+     /*   initialRoute: '/',
         routes: {
           '/': (context) => const SplaceScreen(),
           '/newsLoading': (context) => const Loading(),
           '/news': (context) => const NewsScreen(),
-      },
+      },*/
+    home: SplaceScreen()
     );
   }
 }

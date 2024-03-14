@@ -20,8 +20,9 @@ class _LoadingState extends State<Loading> {
 
   @override
   void initState() {
-    super.initState();
     setupNews();
+    super.initState();
+
   }
 
   @override

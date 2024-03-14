@@ -25,7 +25,6 @@ class _NewsScreenState extends State<NewsScreen> {
   @override
   Widget build(BuildContext context) {
     articles = ModalRoute.of(context)?.settings.arguments;
-    print(articles);
     mq = MediaQuery
         .of(context)
         .size;

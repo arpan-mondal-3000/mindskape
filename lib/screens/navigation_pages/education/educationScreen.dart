@@ -1,6 +1,14 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../../../main.dart';
+import 'package:url_launcher/url_launcher.dart';
+
+void launchURL(Uri url) async {
+  if (await canLaunchUrl(url)) {
+    await launchUrl(url);
+  } else {
+    throw 'Could not launch $url';
+  }
+}
 
 class EducationScreen extends StatefulWidget {
   const EducationScreen({super.key});
@@ -10,8 +18,12 @@ class EducationScreen extends StatefulWidget {
 }
 
 class _EducationScreenState extends State<EducationScreen> {
+
+  dynamic articles = [];
+
   @override
   Widget build(BuildContext context) {
+    articles = ModalRoute.of(context)?.settings.arguments;
     mq = MediaQuery
         .of(context)
         .size;
@@ -44,6 +56,39 @@ class _EducationScreenState extends State<EducationScreen> {
                   color: Colors.black,
                   thickness: 2,
                   height: 0,
+                ),
+
+                Expanded(
+                  child: ListView.builder(
+                    itemCount: articles.length,
+                    itemBuilder: (context, index){
+                      return InkWell(
+                        onTap: () => launchUrl(Uri.parse(articles[index][1])),
+                        child: Container(
+                          margin: const EdgeInsets.fromLTRB(20, 20, 20, 0),
+                          padding: const EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                            color: Colors.white.withOpacity(.6),
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                articles[index][0],
+                                style: const TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                              const SizedBox(height: 5,),
+                              Text(articles[index][2], style: TextStyle(fontSize: 16),)
+                            ],
+                          ),
+                        ),
+                      );
+                    },
+                  ),
                 ),
               ],
             ),

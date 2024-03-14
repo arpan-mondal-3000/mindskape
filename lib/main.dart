@@ -10,6 +10,8 @@ import 'package:mindskape/screens/navigation_pages/categories/categoriesScreen.d
 import 'package:mindskape/screens/navigation_pages/education/educationScreen.dart';
 import 'package:mindskape/screens/navigation_pages/news/news_screen.dart';
 import 'package:mindskape/screens/navigation_pages/news/news_loading_screen.dart';
+import 'package:mindskape/screens/navigation_pages/education/educationLoadingScreen.dart';
+import 'package:mindskape/screens/navigation_pages/education/educationService.dart';
 
 import 'screens/signuppages/LoginActivity.dart';
 import 'screens/navigation_pages/profile/ProfileActivity.dart';
@@ -40,11 +42,13 @@ class MyApp extends StatelessWidget {
           useMaterial3: true,
         ),
         debugShowCheckedModeBanner: false,
-        initialRoute: '/',
+        initialRoute: '/splaceScreen',
         routes: {
-          '/': (context) => const SplaceScreen(),
+          '/splaceScreen': (context) => const SplaceScreen(),
           '/newsLoading': (context) => const Loading(),
           '/news': (context) => const NewsScreen(),
+          '/educationLoading': (context) => const educationLoading(),
+          '/education': (context) => const EducationScreen(),
       },
     );
   }

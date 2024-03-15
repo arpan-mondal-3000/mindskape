@@ -12,6 +12,8 @@ import 'package:mindskape/screens/navigation_pages/news/news_screen.dart';
 import 'package:mindskape/screens/navigation_pages/news/news_loading_screen.dart';
 import 'package:mindskape/screens/navigation_pages/education/educationLoadingScreen.dart';
 import 'package:mindskape/screens/navigation_pages/education/educationService.dart';
+import 'package:mindskape/screens/navigation_pages/tips/tips.dart';
+
 
 import 'screens/signuppages/LoginActivity.dart';
 import 'screens/navigation_pages/profile/ProfileActivity.dart';
@@ -49,6 +51,7 @@ class MyApp extends StatelessWidget {
           '/news': (context) => const NewsScreen(),
           '/educationLoading': (context) => const educationLoading(),
           '/education': (context) => const EducationScreen(),
+          '/tips': (context) => const personalTips(),
       },
     );
   }

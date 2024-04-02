@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 import 'package:mindskape/APIS/APIS.dart';
 import 'package:mindskape/screens/navigation_pages/home/homeScreen.dart';
 
+import '../../chattingScreen/chatUsers.dart';
 import '../navigation_pages/categories/categoriesScreen.dart';
 import '../navigation_pages/profile/ProfileActivity.dart';
 
@@ -65,7 +66,7 @@ class Navigationcontrolar extends GetxController{
   final screen=[
     HomePages(),
     CategoriesScreen(),
-    Container(color: Colors.purpleAccent.shade400,),
+   chatsUser(),
 
     ProfileActivity(profileDetail:APIs.me),
   ];

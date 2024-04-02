@@ -17,6 +17,8 @@ import 'package:mindskape/screens/signuppages/LoginActivity.dart';
 import 'package:mindskape/screens/signuppages/SignUpActivity.dart';
 
 import '../../../main.dart';
+import '../../../model/CurrentMood.dart';
+import '../home/displaymoods.dart';
 
 class ProfileActivity extends StatefulWidget {
   final ProfileDetail profileDetail;
@@ -27,9 +29,46 @@ class ProfileActivity extends StatefulWidget {
 }
 
 class _ProfileActivityState extends State<ProfileActivity> {
+  var data;
+  var questions;
+  int i = 0;
+  int mood = 0;
+  var list = [];
+  bool chakerpass=false;
+  void asyncInitState() async {
+    log("ram");
+    await  APIs.firestore
+        .collection("CurrentMood")
+        .doc(APIs.user.uid)
+        .collection('15-3-2024')
+        .get()
+        .then((value) {
+      list.clear();
+      for (i = 0; i < value.docs.length; i++) {
+        log("ramm");
+        CurrentMoodModel model =
+        CurrentMoodModel.fromJson(value.docs[i].data());
+        log("${value.docs[i].data()}");
+        //log("${model.mood}");
+        mood = model.mood;
+        log("${mood}");
+
+        list.add(mood);
+      }
+      log("${list}");
+      chakerpass=true;
+    }
+
+    );
+
+  }
+
+
+
   initState(){
     setState(() {
       APIs.getSelfInfo();
+      //asyncInitState();
 
     });
   }
@@ -149,29 +188,34 @@ class _ProfileActivityState extends State<ProfileActivity> {
                 const SizedBox(height: 60,),
                 
                 ////  personal information
-                Container(
-                  width: 350,
-                  height: 60,
-                  decoration: BoxDecoration(
-                      color: const Color(0xffFFF9AD),
-                      borderRadius: BorderRadius.circular(12,),
-                  ),
-                  child: const Padding(
-                    padding: EdgeInsets.only(left: 19.0),
-                    child: Stack(
-                      alignment: AlignmentDirectional.centerStart,
-                      children: [
-                        Text(
-                          "Personal Information",
-                          style: TextStyle(color: Colors.black, fontSize: 20),
-                        ),
-                        Positioned(
-                            right: 0,
-                            child: Icon(
-                              Icons.chevron_right_rounded,
-                              size: 60,
-                            ))
-                      ],
+                InkWell(
+                  onTap: (){
+
+                  },
+                  child: Container(
+                    width: 350,
+                    height: 60,
+                    decoration: BoxDecoration(
+                        color: const Color(0xffFFF9AD),
+                        borderRadius: BorderRadius.circular(12,),
+                    ),
+                    child: const Padding(
+                      padding: EdgeInsets.only(left: 19.0),
+                      child: Stack(
+                        alignment: AlignmentDirectional.centerStart,
+                        children: [
+                          Text(
+                            "Personal Information",
+                            style: TextStyle(color: Colors.black, fontSize: 20),
+                          ),
+                          Positioned(
+                              right: 0,
+                              child: Icon(
+                                Icons.chevron_right_rounded,
+                                size: 60,
+                              ))
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -207,29 +251,34 @@ class _ProfileActivityState extends State<ProfileActivity> {
                 
                 //Personal Stats
                 const SizedBox(height: 15,),
-                Container(
-                  width: 350,
-                  height: 60,
-                  decoration: BoxDecoration(
-                      color: const Color(0xffFFF9AD),
-                      borderRadius: BorderRadius.circular(12,),
-                  ),
-                  child: const Padding(
-                    padding: EdgeInsets.only(left: 19.0),
-                    child: Stack(
-                      alignment: AlignmentDirectional.centerStart,
-                      children: [
-                        Text(
-                          "Personal Stats",
-                          style: TextStyle(color: Colors.black, fontSize: 20),
-                        ),
-                        Positioned(
-                            right: 0,
-                            child: Icon(
-                              Icons.chevron_right_rounded,
-                              size: 60,
-                            ))
-                      ],
+                InkWell(
+                  onTap: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (_)=>showmoods()));
+                  },
+                  child: Container(
+                    width: 350,
+                    height: 60,
+                    decoration: BoxDecoration(
+                        color: const Color(0xffFFF9AD),
+                        borderRadius: BorderRadius.circular(12,),
+                    ),
+                    child: const Padding(
+                      padding: EdgeInsets.only(left: 19.0),
+                      child: Stack(
+                        alignment: AlignmentDirectional.centerStart,
+                        children: [
+                          Text(
+                            "Personal Stats",
+                            style: TextStyle(color: Colors.black, fontSize: 20),
+                          ),
+                          Positioned(
+                              right: 0,
+                              child: Icon(
+                                Icons.chevron_right_rounded,
+                                size: 60,
+                              ))
+                        ],
+                      ),
                     ),
                   ),
                 ),

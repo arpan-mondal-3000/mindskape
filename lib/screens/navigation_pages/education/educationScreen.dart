@@ -6,6 +6,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:mindskape/helper.dart';
+import 'package:mindskape/screens/navigation_pages/profile/ProfileActivity.dart';
 import '../../../main.dart';
 import 'EducationLoadUrl.dart';
 
@@ -27,7 +28,7 @@ class _EducationScreenState extends State<EducationScreen> {
     if (response.statusCode == 200) {
       log("4");
       setState(() {
-        stringResponse = response.body;
+       // stringResponse = response.body;
         mapresponse = json.decode(response.body);
       });
     }
@@ -73,12 +74,15 @@ log("2");
               padding: const EdgeInsets.symmetric(horizontal: 8.0),
               child: InkWell(
                 onTap: () {
+                //  Navigator.pushNamedAndRemoveUntil(context, MaterialPageRoute(builder: (_)=>ProfileActivity(profileDetail: profileDetail)), (route) => false)
+
                   Navigator.push(
                       context,
                       MaterialPageRoute(
                           builder: (_) => WebViewPage(
                               mapresponse!["hasPart"][index]["url"]
                                   .toString())));
+
                 },
                 child: Card(
                   child:  ListTile(

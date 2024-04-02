@@ -4,7 +4,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:mindskape/model/CurrentMood.dart';
 import 'package:mindskape/model/chatModel.dart';
+import 'package:mindskape/screens/navigation_pages/home/homeScreen.dart';
 //ALL APIS
 class APIs {
   static FirebaseAuth auth = FirebaseAuth.instance;
@@ -68,13 +70,33 @@ class APIs {
       'about':me.about,
     });
   }
-  // static Future<void> getJournal() async {
-  //   await final ref = FirebaseDatabase.instance.ref("Journal");
-  //   final snapshot = await ref.child().get();
-  //   if (snapshot.exists) {
-  //   print(snapshot.value);
-  //   } else {
-  //   print('No data available.');
-  //   }
+/*  static Future<bool> Moodexist() async {
+    return (await firestore
+        .collection("Users")
+        .doc(user.uid)
+        .get())
+        .exists;
+  }*/
+
+  static Future<void> creatMood( int mood,String image) async {
+     final time = DateTime
+        .now()
+        .millisecondsSinceEpoch
+        .toString();
+ var currentTime="${DateTime.now().hour}:${DateTime.now().minute}";
+ var currentdate="${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}";
+    final currentMood =CurrentMoodModel(time:currentTime , date:currentdate , mood: mood, isSelected: false, id:auth.currentUser!.uid, image: image);
+
+    return await database.ref("CurrentMood").child(user.uid).child(currentdate).child(time)
+        .set(currentMood.toJson());
+
+
+  }
+  static Stream<QuerySnapshot<Map<String, dynamic>>> fireStoreData(){
+    return
+      APIs.firestore.collection("Users").where("id",isNotEqualTo: user.uid).snapshots();
+
+
+  }
 
 }
